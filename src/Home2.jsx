@@ -1,10 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import NameLogo from "./NameLogo";
-import { RouterProvider } from "react-router-dom";
-import Headmaster from "./Headmaster";
+import React, { useState, useEffect } from "react";
 import Admission from "./Admission";
-function Home() {
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import NameLogo from "./NameLogo";
+import Headmaster from "./Headmaster";
+
+export default function HomePage() {
   const students = [
     { class_number: "10", student: "80", fee: "1500" },
     { class_number: "9", student: "70", fee: "1300" },
@@ -27,14 +27,12 @@ function Home() {
   return (
     <>
       <NameLogo />
+      <div>
+        <RouterProvider router={router} />
+      </div>
       <Headmaster />
-      <div className="flex gap-3 justify-center m-3">
-        <img
-          src={images[currentImageIndex].src}
-          alt=""
-          height={300}
-          width={300}
-        />
+      <div className="flex gap-3 justify-center m-3" >
+        <img src={images[currentImageIndex].src} alt="" height={300} width={300} />
       </div>
       <div>
         {students.map((student, index) => (
@@ -44,4 +42,3 @@ function Home() {
     </>
   );
 }
-export default Home;
